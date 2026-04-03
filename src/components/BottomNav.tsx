@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import type { Tab } from '../types'
 
 interface Props {
@@ -5,7 +6,7 @@ interface Props {
   onTabChange: (tab: Tab) => void
 }
 
-const tabs: { id: Tab; label: string; icon: JSX.Element }[] = [
+const tabs: { id: Tab; label: string; icon: ReactNode }[] = [
   {
     id: 'verbs',
     label: 'Verbs',
