@@ -1,73 +1,58 @@
-# React + TypeScript + Vite
+# Latvian Verb Blitz
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A progressive web app for mastering Latvian verb conjugations through interactive quizzes and a built-in reference guide. Installable on your phone — works offline.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Reference**
+- Browse 80+ Latvian verbs with full conjugation tables (present, past, future)
+- Search by Latvian infinitive or English meaning
+- Mark verbs as learned to track your progress
 
-## React Compiler
+**Quiz Modes**
+- **Infinitive Quiz** — match Latvian verbs to their English meanings and vice versa
+- **Conjugation Quiz** — given a person, tense, and meaning, pick the correct conjugated form
+- **Snap!** — fast-paced matching game where you spot whether a Latvian form matches an English meaning. Try for 10 in a row
+- **Gap Fill** — spell out the correct conjugated form with an on-screen Latvian diacritics keyboard (ā, č, ē, ģ, ī, ķ, ļ, ņ, š, ū, ž)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Progress Tracking**
+- Per-verb accuracy stats across all quiz modes
+- "Trickiest verbs" view sorted by error rate
+- Overall accuracy dashboard
 
-## Expanding the ESLint configuration
+**Settings**
+- Choose which tenses to drill (present, past, future)
+- Adjustable timer (5–60 seconds per question)
+- Quiz with all verbs or only ones you've marked as learned
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Install on Your Phone
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Open the deployed URL in your phone's browser
+2. **iOS**: Tap Share → "Add to Home Screen"
+3. **Android**: Tap the three-dot menu → "Add to Home Screen"
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+The app works fully offline after first load.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Development
+
+```bash
+npm install
+npx vite dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Build & Deploy
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npx vite build
+npx vite preview   # local preview of production build
 ```
+
+Deploy the `dist/` folder to any static host (Vercel, Netlify, GitHub Pages).
+
+## Tech Stack
+
+React, TypeScript, Vite, Tailwind CSS, vite-plugin-pwa
+
+## Verb Data
+
+The app ships with 80+ common Latvian verbs covering all three conjugation groups plus irregulars. Verb data lives in `src/data/verbs.json` — add or correct entries there.
