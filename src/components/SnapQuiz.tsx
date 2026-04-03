@@ -18,7 +18,7 @@ export function SnapQuiz({ verbs, settings, onBack, recordAttempt }: Props) {
   const [feedback, setFeedback] = useState<'correct' | 'wrong' | null>(null)
   const [total, setTotal] = useState(0)
   const [score, setScore] = useState(0)
-  const autoAdvanceRef = useRef<ReturnType<typeof setTimeout>>()
+  const autoAdvanceRef = useRef<ReturnType<typeof setTimeout>>(undefined)
 
   const next = useCallback(() => {
     setPair(generateSnapPair(verbs, settings))

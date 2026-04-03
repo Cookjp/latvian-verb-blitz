@@ -44,6 +44,8 @@ export interface Settings {
   learnedOnly: boolean
 }
 
+export type Tab = 'verbs' | 'nouns' | 'vocab' | 'grammar'
+
 export type Screen =
   | 'home'
   | 'verbs'
@@ -54,3 +56,23 @@ export type Screen =
   | 'gap-fill'
   | 'settings'
   | 'stats'
+  | 'noun-categories'
+  | 'noun-list'
+  | 'vocab-categories'
+  | 'vocab-list'
+  | 'grammar'
+  | 'grammar-section'
+  | 'vocab-quiz'
+
+export interface WordEntry {
+  lv: string
+  en: string
+}
+
+export interface WordCategory {
+  id: string
+  name: string
+  nameEn: string
+  icon: string
+  words: WordEntry[]
+}
