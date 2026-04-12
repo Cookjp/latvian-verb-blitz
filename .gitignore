@@ -23,3 +23,17 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Capacitor - iOS
+ios/App/App/public
+ios/App/Pods
+ios/DerivedData
+*.xcworkspace/xcuserdata
+
+# Capacitor - Android
+android/app/src/main/assets/public
+android/.gradle
+android/app/build
+android/build
+*.apk
+*.aab

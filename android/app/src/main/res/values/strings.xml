@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Latvian Verb Blitz</string>
+    <string name="title_activity_main">Latvian Verb Blitz</string>
+    <string name="package_name">com.cookjp.latvianverbblitz</string>
+    <string name="custom_url_scheme">com.cookjp.latvianverbblitz</string>
+</resources>
