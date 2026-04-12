@@ -5,6 +5,7 @@
       "name": "Drēbes",
       "nameEn": "Clothes",
       "icon": "👕",
+      "phrases": [],
       "words": [
         { "lv": "bikses", "en": "trousers" },
         { "lv": "džinsi", "en": "jeans" },
@@ -38,6 +39,7 @@
       "name": "Seja un ķermenis",
       "nameEn": "Face & Body",
       "icon": "🧑",
+      "phrases": [],
       "words": [
         { "lv": "galva", "en": "head" },
         { "lv": "seja", "en": "face" },
@@ -78,6 +80,7 @@
       "name": "Dzīvnieki",
       "nameEn": "Animals",
       "icon": "🐾",
+      "phrases": [],
       "words": [
         { "lv": "suns", "en": "dog" },
         { "lv": "kaķis", "en": "cat" },
@@ -114,6 +117,7 @@
       "name": "Ģimene",
       "nameEn": "Family",
       "icon": "👨‍👩‍👧‍👦",
+      "phrases": [],
       "words": [
         { "lv": "māte", "en": "mother" },
         { "lv": "tēvs", "en": "father" },
@@ -144,6 +148,7 @@
       "name": "Māja",
       "nameEn": "Home & Rooms",
       "icon": "🏠",
+      "phrases": [],
       "words": [
         { "lv": "māja", "en": "house" },
         { "lv": "dzīvoklis", "en": "apartment" },
@@ -174,6 +179,7 @@
       "name": "Mēbeles",
       "nameEn": "Furniture",
       "icon": "🛋️",
+      "phrases": [],
       "words": [
         { "lv": "galds", "en": "table" },
         { "lv": "krēsls", "en": "chair" },
@@ -205,6 +211,7 @@
       "name": "Piena produkti",
       "nameEn": "Dairy",
       "icon": "🧀",
+      "phrases": [],
       "words": [
         { "lv": "piens", "en": "milk" },
         { "lv": "sviests", "en": "butter" },
@@ -223,6 +230,7 @@
       "name": "Ēdieni",
       "nameEn": "Dishes & Food",
       "icon": "🍽️",
+      "phrases": [],
       "words": [
         { "lv": "maize", "en": "bread" },
         { "lv": "baltmaize", "en": "white bread" },
@@ -256,6 +264,7 @@
       "name": "Dzērieni",
       "nameEn": "Drinks",
       "icon": "🥤",
+      "phrases": [],
       "words": [
         { "lv": "ūdens", "en": "water" },
         { "lv": "tēja", "en": "tea" },
@@ -276,6 +285,7 @@
       "name": "Augļi",
       "nameEn": "Fruit",
       "icon": "🍎",
+      "phrases": [],
       "words": [
         { "lv": "ābols", "en": "apple" },
         { "lv": "bumbieris", "en": "pear" },
@@ -300,6 +310,7 @@
       "name": "Dārzeņi",
       "nameEn": "Vegetables",
       "icon": "🥕",
+      "phrases": [],
       "words": [
         { "lv": "kartupelis", "en": "potato" },
         { "lv": "tomāts", "en": "tomato" },
@@ -325,6 +336,7 @@
       "name": "Krāsas",
       "nameEn": "Colours",
       "icon": "🎨",
+      "phrases": [],
       "words": [
         { "lv": "balts", "en": "white" },
         { "lv": "melns", "en": "black" },
