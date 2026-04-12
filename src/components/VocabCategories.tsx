@@ -6,14 +6,25 @@ interface Props {
   onQuiz: () => void
 }
 
+function getCategoryCount(cat: WordCategory): number {
+  return cat.words.length + (cat.phrases?.length || 0)
+}
+
+function getCategoryLabel(cat: WordCategory): string {
+  const wordCount = cat.words.length
+  const phraseCount = cat.phrases?.length || 0
+  if (phraseCount === 0) return `${cat.name} — ${wordCount} words`
+  return `${cat.name} — ${wordCount} words, ${phraseCount} phrases`
+}
+
 export function VocabCategories({ categories, onSelect, onQuiz }: Props) {
-  const totalWords = categories.reduce((sum, c) => sum + c.words.length, 0)
+  const totalItems = categories.reduce((sum, c) => sum + getCategoryCount(c), 0)
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-900 pb-20">
       <header className="pt-12 pb-6 px-6 text-center">
         <h1 className="text-2xl font-bold text-white">Vārdi</h1>
-        <p className="text-slate-400 mt-1">Vocabulary — {totalWords} words across {categories.length} topics</p>
+        <p className="text-slate-400 mt-1">Vocabulary — {totalItems} items across {categories.length} topics</p>
       </header>
 
       <div className="flex-1 px-4">
@@ -41,7 +52,7 @@ export function VocabCategories({ categories, onSelect, onQuiz }: Props) {
               <span className="text-2xl w-10 text-center">{cat.icon}</span>
               <div className="flex-1">
                 <div className="text-white font-medium">{cat.nameEn}</div>
-                <div className="text-slate-400 text-sm">{cat.name} — {cat.words.length} words</div>
+                <div className="text-slate-400 text-sm">{getCategoryLabel(cat)}</div>
               </div>
               <svg className="w-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

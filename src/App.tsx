@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import type { Screen, Tab, WordCategory } from './types'
+import type { Screen, Tab, WordCategory, WordEntry } from './types'
 import verbs from './data/verbs.json'
 import nounsData from './data/nouns.json'
 import vocabData from './data/vocab.json'
@@ -24,13 +24,14 @@ import { VocabQuiz } from './components/VocabQuiz'
 const allVerbs = verbs as Verb[]
 const nounCategories = nounsData.categories as WordCategory[]
 const vocabCategories = vocabData.categories as WordCategory[]
-const allVocabWords = [...nounCategories, ...vocabCategories].flatMap(c => c.words)
+const allVocabWords = [...nounCategories, ...vocabCategories].flatMap(c => [...c.words, ...(c.phrases || [])])
 
 export default function App() {
   const [tab, setTab] = useState<Tab>('verbs')
   const [screen, setScreen] = useState<Screen>('home')
   const [selectedVerbId, setSelectedVerbId] = useState<string | null>(null)
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null)
+  const [quizWords, setQuizWords] = useState<WordEntry[] | null>(null)
   const { progress, toggleLearned, recordAttempt, isLearned } = useProgress()
   const { settings, toggleTense, setTimer, setLearnedOnly } = useSettings()
 
@@ -141,10 +142,16 @@ export default function App() {
           />
         )
       case 'vocab-list':
-        if (!selectedVocabCategory) return <VocabCategories categories={vocabCategories} onSelect={(id) => { setSelectedCategoryId(id); setScreen('vocab-list') }} onQuiz={() => setScreen('vocab-quiz')} />
-        return <WordList category={selectedVocabCategory} onBack={() => setScreen('vocab-categories')} />
+        if (!selectedVocabCategory) return <VocabCategories categories={vocabCategories} onSelect={(id) => { setSelectedCategoryId(id); setScreen('vocab-list') }} onQuiz={() => { setQuizWords(null); setScreen('vocab-quiz') }} />
+        return (
+          <WordList
+            category={selectedVocabCategory}
+            onBack={() => setScreen('vocab-categories')}
+            onQuiz={(words) => { setQuizWords(words); setScreen('vocab-quiz') }}
+          />
+        )
       case 'vocab-quiz':
-        return <VocabQuiz words={allVocabWords} settings={settings} onBack={() => setScreen('vocab-categories')} />
+        return <VocabQuiz words={quizWords || allVocabWords} settings={settings} onBack={() => { setQuizWords(null); setScreen('vocab-categories') }} />
 
       case 'grammar':
         return <GrammarView />

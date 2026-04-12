@@ -75,4 +75,7 @@ export interface WordCategory {
   nameEn: string
   icon: string
   words: WordEntry[]
+  phrases?: WordEntry[]
 }
+
+export type VocabFilter = 'words' | 'phrases' | 'both'
