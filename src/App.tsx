@@ -15,16 +15,14 @@ import { SnapQuiz } from './components/SnapQuiz'
 import { GapFill } from './components/GapFill'
 import { Settings } from './components/Settings'
 import { Stats } from './components/Stats'
-import { NounCategories } from './components/NounCategories'
 import { VocabCategories } from './components/VocabCategories'
 import { WordList } from './components/WordList'
 import { GrammarView } from './components/GrammarView'
 import { VocabQuiz } from './components/VocabQuiz'
 
 const allVerbs = verbs as Verb[]
-const nounCategories = nounsData.categories as WordCategory[]
-const vocabCategories = vocabData.categories as WordCategory[]
-const allVocabWords = [...nounCategories, ...vocabCategories].flatMap(c => [...c.words, ...(c.phrases || [])])
+const vocabCategories = [...nounsData.categories, ...vocabData.categories] as WordCategory[]
+const allVocabWords = vocabCategories.flatMap(c => [...c.words, ...(c.phrases || [])])
 
 export default function App() {
   const [tab, setTab] = useState<Tab>('verbs')
@@ -43,7 +41,6 @@ export default function App() {
   const goTabHome = () => {
     switch (tab) {
       case 'verbs': setScreen('home'); break
-      case 'nouns': setScreen('noun-categories'); break
       case 'vocab': setScreen('vocab-categories'); break
       case 'grammar': setScreen('grammar'); break
     }
@@ -53,7 +50,6 @@ export default function App() {
     setTab(newTab)
     switch (newTab) {
       case 'verbs': setScreen('home'); break
-      case 'nouns': setScreen('noun-categories'); break
       case 'vocab': setScreen('vocab-categories'); break
       case 'grammar': setScreen('grammar'); break
     }
@@ -69,15 +65,11 @@ export default function App() {
 
   const selectedVerb = selectedVerbId ? allVerbs.find(v => v.id === selectedVerbId) : null
 
-  const selectedNounCategory = selectedCategoryId
-    ? nounCategories.find(c => c.id === selectedCategoryId)
-    : null
-
   const selectedVocabCategory = selectedCategoryId
     ? vocabCategories.find(c => c.id === selectedCategoryId)
     : null
 
-  const showNav = !['verb-detail', 'verbs', 'infinitive-quiz', 'conjugation-quiz', 'snap-quiz', 'gap-fill', 'settings', 'stats', 'noun-list', 'vocab-list', 'vocab-quiz'].includes(screen)
+  const showNav = !['verb-detail', 'verbs', 'infinitive-quiz', 'conjugation-quiz', 'snap-quiz', 'gap-fill', 'settings', 'stats', 'vocab-list', 'vocab-quiz'].includes(screen)
 
   const renderScreen = () => {
     switch (screen) {
@@ -121,17 +113,6 @@ export default function App() {
         return <Settings settings={settings} toggleTense={toggleTense} setTimer={setTimer} setLearnedOnly={setLearnedOnly} onBack={goTabHome} />
       case 'stats':
         return <Stats verbs={allVerbs} progress={progress} onBack={goTabHome} />
-
-      case 'noun-categories':
-        return (
-          <NounCategories
-            categories={nounCategories}
-            onSelect={(id) => { setSelectedCategoryId(id); setScreen('noun-list') }}
-          />
-        )
-      case 'noun-list':
-        if (!selectedNounCategory) return <NounCategories categories={nounCategories} onSelect={(id) => { setSelectedCategoryId(id); setScreen('noun-list') }} />
-        return <WordList category={selectedNounCategory} onBack={() => setScreen('noun-categories')} />
 
       case 'vocab-categories':
         return (
